@@ -11,7 +11,7 @@ jobs:
     steps:
     - uses: actions/checkout@v3
 
-    - name: Prepare environment
+    - name: Preparing environment
       run: |
         sudo sed -Ei 's/^# deb-src /deb-src /' /etc/apt/sources.list
         sudo apt update
