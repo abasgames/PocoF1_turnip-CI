@@ -87,12 +87,12 @@ ninja -C build-android-aarch64 &> $workdir/ninja_log
 echo "Using patchelf to match soname ..."  $'\n'
 cp $workdir/mesa-main/build-android-aarch64/src/freedreno/vulkan/libvulkan_freedreno.so $workdir
 cd $workdir
-patchelf --set-soname vulkan.adreno.so libvulkan_freedreno.so
-mv libvulkan_freedreno.so vulkan.adreno.so
+patchelf --set-soname vulkan.sdm845.so libvulkan_freedreno.so
+mv libvulkan_freedreno.so vulkan.sdm845.so
 
 
 
-if ! [ -a vulkan.adreno.so ]; then
+if ! [ -a vulkan.sdm845.so ]; then
 	echo -e "$red Build failed! $nocolor" && exit 1
 fi
 
@@ -149,19 +149,19 @@ name=turnip
 version=v1.0
 versionCode=1
 author=MrMiy4mo
-description=Turnip is an open-source vulkan driver for devices with adreno GPUs.
+description=Turnip is an open-source vulkan driver for POCO F1 untested,untested on other phones too .
 EOF
 
 
 
 cat <<EOF >"customize.sh"
-set_perm \$MODPATH/$p1/vulkan.adreno.so 0 0 0644
+set_perm \$MODPATH/$p1/vulkan.sdm845.so 0 0 0644
 EOF
 
 
 
 echo "Copy necessary files from work directory ..." $'\n'
-cp $workdir/vulkan.adreno.so $magiskdir/$p1
+cp $workdir/vulkan.sdm845.so $magiskdir/$p1
 
 
 
